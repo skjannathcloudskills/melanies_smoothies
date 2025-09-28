@@ -38,8 +38,8 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit
 # st.dataframe(data=my_dataframe, use_container_width=True)
 # st.stop()
 pd_df=my_dataframe.to_pandas()
-st.data_frame(pd_df)
-st.stop()
+# st.data_frame(pd_df)
+# st.stop()
 ingredient_list=st.multiselect('Choose upto 5 ingredients :',my_dataframe,
                               max_selections=5)
 if ingredient_list:
@@ -51,7 +51,7 @@ if ingredient_list:
     for fruit_chosen in ingredient_list:
         ingredients_string+=fruit_chosen+' '
         search_on=pd_df.loc[pd_df['fruit_name']==fruit_choosen,'SEARCH_ON'].iloc[0]
-        # st.write('The search value for ',fruit_choosen,'is',search_on '.')
+        st.write('The search value for ',fruit_choosen,'is',search_on '.')
         st.subheader(fruit_chosen +'nutrition information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 #st.text(smoothiefroot_response.json())
