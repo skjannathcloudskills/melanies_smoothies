@@ -33,7 +33,7 @@ st.write("The Name on smoothie will be ", name_on_order)
 cnx = st.connection("snowflake")
 session=cnx.session()
 #session = get_active_session()
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'),COL('SEARCH_ON'))
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'),col('SEARCH_ON'))
 st.dataframe(data=my_dataframe, use_container_width=True)
 st.stop()
 ingredient_list=st.multiselect('Choose upto 5 ingredients :',my_dataframe,
